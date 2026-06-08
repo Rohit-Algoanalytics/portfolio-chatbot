@@ -1,0 +1,16 @@
+streamlit
+pandas
+matplotlib
+plotly
+langchain
+langchain-core
+langchain-openai
+langchain-groq
+langgraph
+boto3
+python-dotenv
+numpy
+seaborn
+fastapi
+pydantic
+uvicorn
