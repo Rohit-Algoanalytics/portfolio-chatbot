@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 from utils.s3_file_loader import load_portfolio_data, get_user_list
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(override=True)
 # --- Streamlit Page Configuration ---
 st.set_page_config(
     page_title="Portfolio agent",
@@ -80,6 +80,7 @@ def main():
 
         try:
             user_list = fetch_user_list()
+            print(user_list)
         except Exception as e:
             st.error(f"Failed to fetch users from S3: {e}")
             user_list = []
