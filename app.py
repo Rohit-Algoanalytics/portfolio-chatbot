@@ -156,9 +156,6 @@ def main():
             if "Thinking" in msg and st.session_state.show_thinking:
                 with st.expander("🤔 Agent Thinking Process"):
                     st.markdown(msg["Thinking"])
-            if "code" in msg:
-                with st.expander("💻 Generated Code"):
-                    st.code(msg["code"], language="python")
             if "dataframe" in msg:
                 with st.expander("📊 Filtered DataFrame"):
                     st.dataframe(msg["dataframe"], use_container_width=True)
@@ -203,7 +200,6 @@ def main():
 
                 response_placeholder = st.empty()
                 thinking_placeholder = st.empty()
-                code_placeholder = st.empty()
                 viz_placeholder = st.empty()
 
                 streamed_response = ""
@@ -227,11 +223,7 @@ def main():
                                 thinking_placeholder.markdown(f"### 🤔 Agent Thinking Process\n\n{combined_reasoning}▌")
 
                         if node_name == "code_generator":
-                            code_text = str(current_state.get("code", ""))
-                            if code_text:
-                                streamed_code = code_text
-                                code_placeholder.markdown("### 💻 Generated Code")
-                                code_placeholder.code(streamed_code, language="python")
+                            streamed_code = str(current_state.get("code", ""))
 
                         if node_name == "response_generator":
                             msg_list = current_state.get("messages", [])
@@ -272,9 +264,6 @@ def main():
                 if streamed_reasoning:
                     combined_reasoning = "\n\n".join(streamed_reasoning)
                     thinking_placeholder.markdown(f"### 🤔 Agent Thinking Process\n\n{combined_reasoning}")
-                if streamed_code:
-                    code_placeholder.markdown("### 💻 Generated Code")
-                    code_placeholder.code(streamed_code, language="python")
 
                 response_placeholder.markdown(streamed_response)
 

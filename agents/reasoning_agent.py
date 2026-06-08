@@ -33,7 +33,7 @@ metric_extraction_prompt = ChatPromptTemplate.from_template("""
     - Do **not** invent or assume metrics that are not listed.
     - Always TRY to include 'tradingsymbol', 'sector', and 'profit_loss' columns as they are essential for analysis and visualization.
     - If a user mentions any figures in percentages(%) , keep the values as it is eg 10% -> 10% and not 0.10 .
-    - If the user mentions about about Momentum filters and value filters in the query below is some context about the filters -
+    - If the user mentions about about Momentum filters and value filters in the query below is some context about the filters . All the values in the fields are boolean values "TRUE"/"FALSE" -
       MOMENTUM FILTERS : 
             momentum_filter_Final_Selected - FILTER WHERE MARKOWITZ OPTIMIZATION IS APPLIED AND WE GET SET OF 6 STOCKS .
             momentum_filter_Meets_Price_Ranking_Condition - FILTER WHERE THE STOCKS COMPOSITE AVERAGE OF P/S , P/B , P/E is computed and sorted in ascending order and top 50 % stocks are selected .
