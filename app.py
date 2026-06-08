@@ -123,22 +123,22 @@ def main():
 
         st.divider()
         st.header("💡 Sample Queries")
-        sample_queries = [
-            "Show top 10 companies by Market Cap",
-            "Calculate average ROE for last 5 years",
-            "Find companies with ROE > 0.15 and ROCE > 0.20",
-            "Analyze financial performance trends",
-            "Show top 5 companies by ROCE with visualization",
-            "Compare Net Profit between 2023 and 2024",
-            "Rank companies by P/E ratio",
-            "Find undervalued companies based on P/E",
-            "Get the latest financial news about Reliance Industries"
-        ]
-        for query in sample_queries:
-            if st.button(query, key=query, use_container_width=True):
-                if st.session_state.dataset is not None:
-                    st.session_state.messages.append({"role": "user", "content": query})
-                    st.rerun()
+        # sample_queries = [
+        #     "Show top 10 companies by Market Cap",
+        #     "Calculate average ROE for last 5 years",
+        #     "Find companies with ROE > 0.15 and ROCE > 0.20",
+        #     "Analyze financial performance trends",
+        #     "Show top 5 companies by ROCE with visualization",
+        #     "Compare Net Profit between 2023 and 2024",
+        #     "Rank companies by P/E ratio",
+        #     "Find undervalued companies based on P/E",
+        #     "Get the latest financial news about Reliance Industries"
+        # ]
+        # for query in sample_queries:
+        #     if st.button(query, key=query, use_container_width=True):
+        #         if st.session_state.dataset is not None:
+        #             st.session_state.messages.append({"role": "user", "content": query})
+        #             st.rerun()
 
         st.divider()
         if st.button("🗑️ Clear Chat", use_container_width=True):
@@ -154,10 +154,10 @@ def main():
     for msg in st.session_state.messages:
         with st.chat_message(msg["role"]):
             if "Thinking" in msg and st.session_state.show_thinking:
-                with st.expander("🤔 Agent Thinking Process"):
+                with st.expander("🤔 Agent Thinking Process", expanded=True):
                     st.markdown(msg["Thinking"])
             if "dataframe" in msg:
-                with st.expander("📊 Filtered DataFrame"):
+                with st.expander("📊 Filtered DataFrame", expanded=True):
                     st.dataframe(msg["dataframe"], use_container_width=True)
 
             st.write(msg["content"])
