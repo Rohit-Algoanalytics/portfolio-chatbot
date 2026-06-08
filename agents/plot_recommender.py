@@ -1,10 +1,10 @@
 from utils.agentstate import AgentState
 from dotenv import load_dotenv
-from langchain_core.messages import  AIMessage
 import json
 import logging
-from langchain.prompts import ChatPromptTemplate
-from langchain.schema.output_parser import StrOutputParser
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.messages import AIMessage
+from langchain_core.output_parsers import StrOutputParser
 from utils.sanitize_json import clean_json_response
 from llm.factory import LLMFactory
 from utils.token_counter import TokenCounterCallback
